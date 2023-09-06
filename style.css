@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 960px;
+    border-style: solid;
+    border-color: red;
+    flex-wrap: wrap;
+}
+
+.cell {
+    flex: 1 0 60px;
+    height: 80px;
+}
+
+.cell:hover {
+    background-color: black;
+}
