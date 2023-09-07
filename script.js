@@ -1,32 +1,42 @@
-let container = document.querySelector('.container')
-let input = document.querySelector('.grid-input')
-let btn = document.querySelector('.btn')
+function add_active(cell){
+    cell.classList.add('active')
+}
 
-let grid_size = input.value
-
-
-function set_grid(g_size){
+function set_grid(g_size , cont){
     for (let i = 0;i < g_size;i++){
         for (let j = 0;j < g_size;j++)
         {
             let cell = document.createElement('div')
             cell.classList.add('cell')
     
-            container.append(cell)
+            cont.append(cell)
         }
     }
+
+    let cells = document.querySelectorAll('.cell')
+
+    for (let i=0;i<cells.length;i++){
+        cells[i].classList.remove('active')
+    }
+
+    for (let i=0;i<cells.length;i++){
+        cells[i].addEventListener('mouseover' , () => {add_active(cells[i])})
+        cells[i].style.height = `${560 / g_size}px`
+        cells[i].style.width = `${560 / g_size}px`
+    }
+    console.log(g_size)
+    console.log(cont)
 }
 
-set_grid(grid_size)
 
-function add_active(cell){
-    cell.classList.add('active')
-}
+let container = document.querySelector('.container')
+let btn = document.getElementById('btn')
+let input = document.querySelector('.grid-input')
 
-let cells = document.querySelectorAll('.cell')
-
-for (let i=0;i<cells.length;i++){
-    cells[i].addEventListener('mouseover' , () => {add_active(cells[i])})
-    cells[i].style.height = `${560 / grid_size}px`
-    cells[i].style.width = `${560 / grid_size}px`
-}
+btn.addEventListener('click' ,() => {
+    if (input.value > 100)
+    {
+        alert('grid limit exceeded')
+    }
+    else set_grid(input.value,container)
+})
