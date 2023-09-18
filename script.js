@@ -3,6 +3,10 @@ function add_active(cell){
 }
 
 function set_grid(g_size , cont){
+    while(cont.firstChild){
+        cont.removeChild(cont.firstChild)
+    }
+    
     for (let i = 0;i < g_size;i++){
         for (let j = 0;j < g_size;j++)
         {
@@ -24,8 +28,6 @@ function set_grid(g_size , cont){
         cells[i].style.height = `${560 / g_size}px`
         cells[i].style.width = `${560 / g_size}px`
     }
-    console.log(g_size)
-    console.log(cont)
 }
 
 
